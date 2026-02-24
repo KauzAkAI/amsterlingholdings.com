@@ -162,12 +162,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    mix-blend-mode: difference;
 }
 
 .nav-logo {
     height: 50px;
-    filter: brightness(0) invert(1);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
