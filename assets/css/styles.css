@@ -285,6 +285,8 @@ body {
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
+    overflow: visible;
+    padding-bottom: 5px;
 }
 
 .hero-stat-value {
