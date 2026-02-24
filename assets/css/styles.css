@@ -162,10 +162,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    mix-blend-mode: difference;
 }
 
 .nav-logo {
     height: 50px;
+    filter: brightness(0) invert(1);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -231,6 +233,7 @@ body {
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .hero-eyebrow span {
@@ -241,22 +244,20 @@ body {
     font-family: var(--font-display);
     font-size: clamp(60px, 12vw, 180px);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 0.9;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .hero-title .line {
     display: block;
-    overflow: visible;
-    padding-bottom: 0.1em;
+    overflow: hidden;
 }
 
 .hero-title .word {
     display: inline-block;
     transform: translateY(100%);
-    padding-bottom: 0.15em;
 }
 
 .hero-title em {
@@ -270,6 +271,7 @@ body {
     color: var(--text-dim);
     letter-spacing: 0.1em;
     margin-top: 40px;
+    overflow: hidden;
 }
 
 .hero-stats {
@@ -313,6 +315,7 @@ body {
     align-items: center;
     gap: 15px;
     opacity: 0;
+    z-index: 10;
 }
 
 .scroll-text {
