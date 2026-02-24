@@ -167,7 +167,7 @@ body {
 
 .nav-logo {
     height: 50px;
-    
+    filter: brightness(0) invert(1);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -251,13 +251,11 @@ body {
 
 .hero-title .line {
     display: block;
-    overflow: visible;
-    padding-bottom: 0.1em;
+    padding-bottom: 0.05em;
 }
 
 .hero-title .word {
     display: inline-block;
-    transform: translateY(100%);
 }
 
 .hero-title em {
@@ -283,12 +281,9 @@ body {
 
 .hero-stat {
     text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .hero-stat-value {
-    padding-bottom: 8px;
     font-family: var(--font-display);
     font-size: 56px;
     font-weight: 400;
@@ -315,8 +310,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    opacity: 0;
-    z-index: 10;
+    opacity: 1;
 }
 
 .scroll-text {
@@ -799,8 +793,7 @@ body {
     .footer { padding: 80px 30px 40px; }
     
     .hero-stats { gap: 40px; }
-    .hero-stat-value {
-    padding-bottom: 8px; font-size: 40px; }
+    .hero-stat-value { font-size: 40px; }
     
     .properties-grid {
         grid-template-columns: 1fr;
