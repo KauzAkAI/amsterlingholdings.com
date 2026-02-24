@@ -167,7 +167,7 @@ body {
 
 .nav-logo {
     height: 50px;
-    filter: brightness(0) invert(1);
+    /* filter: brightness(0) invert(1); */
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -285,16 +285,15 @@ body {
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
-    overflow: visible;
-    padding-bottom: 5px;
 }
 
 .hero-stat-value {
+    overflow: visible;
     font-family: var(--font-display);
     font-size: 56px;
     font-weight: 400;
     color: var(--gold);
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
 .hero-stat-label {
@@ -800,7 +799,8 @@ body {
     .footer { padding: 80px 30px 40px; }
     
     .hero-stats { gap: 40px; }
-    .hero-stat-value { font-size: 40px; }
+    .hero-stat-value {
+    overflow: visible; font-size: 40px; }
     
     .properties-grid {
         grid-template-columns: 1fr;
