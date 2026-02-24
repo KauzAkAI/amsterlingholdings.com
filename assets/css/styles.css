@@ -231,7 +231,6 @@ body {
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 30px;
-    overflow: hidden;
 }
 
 .hero-eyebrow span {
@@ -257,6 +256,7 @@ body {
 .hero-title .word {
     display: inline-block;
     transform: translateY(100%);
+    padding-bottom: 0.15em;
 }
 
 .hero-title em {
@@ -270,7 +270,6 @@ body {
     color: var(--text-dim);
     letter-spacing: 0.1em;
     margin-top: 40px;
-    overflow: hidden;
 }
 
 .hero-stats {
