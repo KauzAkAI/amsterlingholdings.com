@@ -167,7 +167,7 @@ body {
 
 .nav-logo {
     height: 50px;
-    /* filter: brightness(0) invert(1); */
+    
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -288,12 +288,12 @@ body {
 }
 
 .hero-stat-value {
-    overflow: visible;
+    padding-bottom: 8px;
     font-family: var(--font-display);
     font-size: 56px;
     font-weight: 400;
     color: var(--gold);
-    line-height: 1.15;
+    line-height: 1;
 }
 
 .hero-stat-label {
@@ -800,7 +800,7 @@ body {
     
     .hero-stats { gap: 40px; }
     .hero-stat-value {
-    overflow: visible; font-size: 40px; }
+    padding-bottom: 8px; font-size: 40px; }
     
     .properties-grid {
         grid-template-columns: 1fr;
