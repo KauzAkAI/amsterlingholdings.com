@@ -244,7 +244,7 @@ body {
     font-family: var(--font-display);
     font-size: clamp(60px, 12vw, 180px);
     font-weight: 400;
-    line-height: 0.9;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
     overflow: hidden;
@@ -288,7 +288,6 @@ body {
 }
 
 .hero-stat-value {
-    padding-bottom: 8px;
     font-family: var(--font-display);
     font-size: 56px;
     font-weight: 400;
@@ -799,8 +798,7 @@ body {
     .footer { padding: 80px 30px 40px; }
     
     .hero-stats { gap: 40px; }
-    .hero-stat-value {
-    padding-bottom: 8px; font-size: 40px; }
+    .hero-stat-value { font-size: 40px; }
     
     .properties-grid {
         grid-template-columns: 1fr;
