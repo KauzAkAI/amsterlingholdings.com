@@ -1,6 +1,5 @@
 /* A.M. Sterling Holdings - Main JavaScript */
 
-// Three.js Particle Background
 const container = document.getElementById('canvas-container');
 if (container) {
     const scene = new THREE.Scene();
@@ -25,7 +24,7 @@ if (container) {
         size: 0.008,
         color: 0xd4a853,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.6,
         blending: THREE.AdditiveBlending
     });
 
@@ -42,10 +41,9 @@ if (container) {
 
     function animate() {
         requestAnimationFrame(animate);
-        particlesMesh.rotation.x += 0.0003;
-        particlesMesh.rotation.y += 0.0005;
-        particlesMesh.rotation.x += (targetY * 0.1 - particlesMesh.rotation.x) * 0.05;
-        particlesMesh.rotation.y += (targetX * 0.1 - particlesMesh.rotation.y) * 0.05;
+        particlesMesh.rotation.y += 0.001;
+        particlesMesh.rotation.x += (targetY * 0.05 - particlesMesh.rotation.x) * 0.02;
+        particlesMesh.rotation.y += (targetX * 0.05 - particlesMesh.rotation.y) * 0.02;
         renderer.render(scene, camera);
     }
     animate();
@@ -57,13 +55,15 @@ if (container) {
     });
 }
 
-// Smooth scroll
+// Smooth scroll logic
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(this.getAttribute('href') !== "#") {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
     });
 });
