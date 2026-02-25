@@ -262,6 +262,13 @@ body {
     color: var(--gold);
 }
 
+.hero-title sup {
+    font-size: 0.3em;
+    vertical-align: super;
+    color: var(--gold);
+    font-style: normal;
+}
+
 .hero-subtitle {
     font-size: 18px;
     font-weight: 300;
