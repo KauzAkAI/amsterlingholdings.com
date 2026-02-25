@@ -1,3 +1,5 @@
+/* A.M. Sterling Holdings - Production Styles */
+
 :root {
     --black: #050507;
     --deep: #0a0a0f;
@@ -21,46 +23,48 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--black); color: var(--text); overflow-x: hidden; }
 
+/* Background / Canvas */
 #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.6; }
 .grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.03; }
 .ambient-glow { position: fixed; width: 800px; height: 800px; border-radius: 50%; filter: blur(150px); opacity: 0.15; pointer-events: none; z-index: 0; }
 .glow-1 { top: -200px; right: -200px; background: radial-gradient(circle, var(--gold) 0%, transparent 70%); }
 .glow-2 { bottom: -300px; left: -200px; background: radial-gradient(circle, var(--copper) 0%, transparent 70%); }
 
+/* Navigation */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; }
-.nav-logo { height: 50px; }
+.nav-logo { height: 50px; width: auto; }
 .nav-links { display: flex; gap: 50px; list-style: none; }
-.nav-links a { color: var(--text); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+.nav-links a { color: var(--text); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; transition: 0.3s; }
+.nav-links a:hover { color: var(--gold); }
 
+/* Hero Branding */
 .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 60px; z-index: 2; }
-.hero-content { text-align: center; max-width: 1200px; }
-.hero-title { font-family: var(--font-display); font-size: 84px; line-height: 1.1; margin-bottom: 20px; }
-.tm-symbol { font-size: 0.35em; vertical-align: super; margin-left: 2px; font-style: normal; color: var(--gold-dim); }
-.hero-subtitle { font-size: 18px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 60px; }
-.hero-stats { display: flex; justify-content: center; gap: 80px; }
-.hero-stat-value { font-family: var(--font-display); font-size: 56px; color: var(--gold); }
-.hero-stat-label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-top: 10px; }
+.hero-title { font-family: var(--font-display); font-size: clamp(48px, 8vw, 84px); text-align: center; line-height: 1.1; }
+.tm-symbol { font-size: 0.35em; vertical-align: super; margin-left: 4px; font-style: normal; color: var(--gold-dim); }
+.hero-subtitle { font-size: 18px; color: var(--text-dim); letter-spacing: 0.1em; margin: 20px 0 60px; text-align: center; }
 
+/* Portfolio Section */
 .portfolio { position: relative; z-index: 2; padding: 150px 60px; }
 .properties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.property-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 4px; overflow: hidden; transition: 0.4s ease; position: relative;}
+.property-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 4px; overflow: hidden; transition: 0.4s ease; }
 .property-card.featured { grid-column: span 2; }
-.card-visual { height: 200px; background: var(--surface); position: relative; }
-.property-card.featured .card-visual { height: 350px; }
 .card-content { padding: 30px; }
-.card-location { font-size: 11px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-.card-title { font-family: var(--font-display); font-size: 24px; margin-bottom: 15px; }
+.card-title { font-family: var(--font-display); font-size: 24px; margin-bottom: 15px; line-height: 1.3; }
 .card-price-value { font-family: var(--font-display); font-size: 36px; color: var(--gold); }
-.card-download { display: block; text-align: center; padding: 18px; border: 1px solid var(--glass-border); color: var(--text); text-decoration: none; font-size: 11px; text-transform: uppercase; margin-top: 25px; transition: 0.3s; }
-.card-download:hover { border-color: var(--gold); color: var(--gold); }
 
+/* Footer Branding Fixes */
 .footer { position: relative; z-index: 2; padding: 100px 60px 60px; border-top: 1px solid var(--glass-border); }
 .footer-content { display: flex; justify-content: space-between; align-items: flex-start; }
-.shareholder-portals { margin-top: 24px; display: flex; gap: 15px; }
-.portal-link { font-size: 9px; color: var(--text-muted); text-decoration: none; text-transform: uppercase; padding: 8px 12px; border: 1px solid var(--glass-border); transition: 0.3s; }
-.portal-link:hover { color: var(--gold); border-color: var(--gold); }
-.footer-email { font-family: var(--font-display); font-size: 28px; color: var(--gold); text-decoration: none; }
+.footer-logo { height: 45px !important; width: auto !important; margin-bottom: 20px; display: block; opacity: 0.9; }
+.footer-email { font-family: var(--font-display); font-size: 28px; color: var(--gold); text-decoration: none; transition: 0.3s; }
+.footer-email:hover { color: var(--gold-bright); }
 
+/* Corporate Portals */
+.shareholder-portals { margin-top: 24px; display: flex; gap: 15px; }
+.portal-link { font-size: 9px; color: var(--text-muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.2em; padding: 8px 12px; border: 1px solid var(--glass-border); background: var(--glass); transition: 0.3s; }
+.portal-link:hover { color: var(--gold); border-color: var(--gold); background: var(--glass-hover); }
+
+/* Responsive */
 @media (max-width: 900px) {
     .properties-grid { grid-template-columns: 1fr; }
     .property-card.featured { grid-column: span 1; }
