@@ -1,7 +1,7 @@
-/* A.M. Sterling Holdings - Production Ready JavaScript */
+/* A.M. Sterling Holdings™ - Production Ready JavaScript */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Three.js Particle Background
+    // 1. Particle Background Initialization
     const initParticles = () => {
         const container = document.getElementById('canvas-container');
         if (!container || typeof THREE === 'undefined') return;
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // 2. Verified Smooth Scroll
+    // 2. Verified Smooth Scroll for Corporate Portals
     const initScroll = () => {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
