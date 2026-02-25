@@ -5,96 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A.M. Sterling Holdings</title>
     <meta name="robots" content="noindex, nofollow">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
-    
-    <!-- Three.js Background -->
     <div id="canvas-container"></div>
-    
-    <!-- Visual Effects -->
     <div class="grain"></div>
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
-    
-    <!-- Navigation -->
+
     <nav class="nav">
         <img src="assets/images/logo.png" alt="A.M. Sterling Holdings" class="nav-logo">
         <ul class="nav-links">
-            <li><a href="#portfolio" class="hover-target">Holdings</a></li>
-            <li><a href="#contact" class="hover-target">Contact</a></li>
+            <li><a href="#portfolio">Holdings</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    
-    <!-- Hero Section -->
+
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-eyebrow">
-                <span>Private Holdings</span>
-            </div>
-            <h1 class="hero-title">
-                <span class="line"><span class="word">A.M.</span> <span class="word"><em>Sterling</em></span></span>
-                <span class="line"><span class="word">Holdings</span></span>
-            </h1>
-            <p class="hero-subtitle">Director & Shareholder Access</p>
-            
+            <img src="assets/images/logo_main.png" alt="A.M. Sterling Holdings" class="hero-logo-img">
+            <p class="hero-subtitle">Director &amp; Shareholder Access</p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <div class="hero-stat-value">354.85</div>
                     <div class="hero-stat-label">Total Acres</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">$19.9M</div>
+                    <div class="hero-stat-value">$26.2M</div>
                     <div class="hero-stat-label">Portfolio Value</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">9</div>
+                    <div class="hero-stat-value">10</div>
                     <div class="hero-stat-label">Properties</div>
                 </div>
             </div>
         </div>
-        
         <div class="scroll-indicator">
             <span class="scroll-text">Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
-    
-    <!-- Portfolio Section -->
+
     <section class="portfolio" id="portfolio">
         <div class="section-header">
             <div class="section-title-group">
                 <div class="section-label">Assets</div>
                 <h2 class="section-title">Current Holdings</h2>
             </div>
-            <div class="section-count">09</div>
+            <div class="section-count">10</div>
         </div>
-        
+
         <div class="properties-grid">
-            <!-- Featured: US 41 Storage -->
-            <div class="property-card featured hover-target">
+
+            <!-- 1. Ocean Club Bahamas - FEATURED -->
+            <div class="property-card featured">
+                <div class="card-visual" style="background: url('assets/images/ocean_club.png') center/cover no-repeat;">
+                    <div class="card-badge">Not For Sale</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Paradise Island, Bahamas</div>
+                    <h3 class="card-title">Ocean Club Residences &amp; Marina<br>Luxury Condominium</h3>
+                    <span class="card-type">Residential Condo</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">5,234</div>
+                            <div class="card-stat-label">SF</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">4 BD</div>
+                            <div class="card-stat-label">Bedrooms</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">Marina</div>
+                            <div class="card-stat-label">52-Slip</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$6,250,000</div>
+                        <div class="card-price-per">Listing Value</div>
+                    </div>
+                    <a href="assets/pdfs/Ocean_Club_Residences_Bahamas.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download Info Sheet</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. US 41 Storage - $4,750,000 - 16.08 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 7V3h6v4"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 7V3h6v4"/></svg>
                     </div>
-                    <div class="card-badge">Featured</div>
                 </div>
                 <div class="card-content">
                     <div class="card-location">Pasco County, Florida</div>
-                    <h3 class="card-title">18602 US Highway 41<br>Storage-Entitled Industrial Campus</h3>
+                    <h3 class="card-title">18602 US Highway 41<br>Storage-Entitled Industrial</h3>
                     <span class="card-type">Industrial / Storage</span>
                     <div class="card-stats">
                         <div class="card-stat">
@@ -103,40 +115,30 @@
                         </div>
                         <div class="card-stat">
                             <div class="card-stat-value">11K</div>
-                            <div class="card-stat-label">SF Building</div>
-                        </div>
-                        <div class="card-stat">
-                            <div class="card-stat-value">13 AC</div>
-                            <div class="card-stat-label">Storage Entitled</div>
+                            <div class="card-stat-label">SF</div>
                         </div>
                     </div>
                     <div class="card-price">
                         <div class="card-price-value">$4,750,000</div>
                         <div class="card-price-per">$295,391 / acre</div>
                     </div>
-                    <a href="assets/pdfs/18602_US41_Storage_Sales_Package.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
-                        <span>Download Package</span>
+                    <a href="assets/pdfs/18602_US41_Storage_Sales_Package.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Medical Office -->
-            <div class="property-card hover-target">
+
+            <!-- 3. Cortez Blvd Medical - $3,600,000 - 4.0 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M12 8v8M8 12h8"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
                     </div>
-                    <div class="card-badge">Income</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Hernando County</div>
+                    <div class="card-location">Hernando County, Florida</div>
                     <h3 class="card-title">15435 Cortez Blvd<br>Medical Office Campus</h3>
                     <span class="card-type">Medical Office</span>
                     <div class="card-stats">
@@ -146,35 +148,30 @@
                         </div>
                         <div class="card-stat">
                             <div class="card-stat-value">19.7K</div>
-                            <div class="card-stat-label">SF Total</div>
+                            <div class="card-stat-label">SF</div>
                         </div>
                     </div>
                     <div class="card-price">
                         <div class="card-price-value">$3,600,000</div>
                         <div class="card-price-per">$182 / SF</div>
                     </div>
-                    <a href="assets/pdfs/Cortez_Blvd_15435_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Cortez_Blvd_15435_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Spring Hill Drive -->
-            <div class="property-card hover-target">
+
+            <!-- 4. Spring Hill Dr - $2,950,000 - 1.6 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg>
                     </div>
-                    <div class="card-badge">Drive-Thru</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Spring Hill</div>
+                    <div class="card-location">Spring Hill, Florida</div>
                     <h3 class="card-title">13080 Spring Hill Dr<br>Two-Building Campus</h3>
                     <span class="card-type">Commercial / Bank</span>
                     <div class="card-stats">
@@ -191,29 +188,23 @@
                         <div class="card-price-value">$2,950,000</div>
                         <div class="card-price-per">$200 / SF</div>
                     </div>
-                    <a href="assets/pdfs/Spring_Hill_Dr_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Spring_Hill_Dr_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Broad Street -->
-            <div class="property-card hover-target">
+
+            <!-- 5. Broad Street US41 - $1,980,000 - 16.5 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                            <line x1="4" y1="22" x2="4" y2="15"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
                     </div>
-                    <div class="card-badge">21K+ Traffic</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Brooksville</div>
+                    <div class="card-location">Brooksville, Florida</div>
                     <h3 class="card-title">Broad Street (US 41)<br>Highway Development Land</h3>
                     <span class="card-type">Development Land</span>
                     <div class="card-stats">
@@ -223,37 +214,31 @@
                         </div>
                         <div class="card-stat">
                             <div class="card-stat-value">21K+</div>
-                            <div class="card-stat-label">Daily Traffic</div>
+                            <div class="card-stat-label">Traffic</div>
                         </div>
                     </div>
                     <div class="card-price">
                         <div class="card-price-value">$1,980,000</div>
                         <div class="card-price-per">$120,000 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Broad_Street_US41_Final.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Broad_Street_US41_Final.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Culbreath/Rogues Path -->
-            <div class="property-card hover-target">
+
+            <!-- 6. Culbreath & Rogues Path - $1,750,000 - 98.9 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
-                    <div class="card-badge">Home Incl.</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Spring Lake Area</div>
-                    <h3 class="card-title">Culbreath & Rogues Path<br>Rural Estate</h3>
+                    <div class="card-location">Spring Lake, Florida</div>
+                    <h3 class="card-title">Culbreath &amp; Rogues Path<br>Rural Estate</h3>
                     <span class="card-type">Rural Estate</span>
                     <div class="card-stats">
                         <div class="card-stat">
@@ -269,29 +254,23 @@
                         <div class="card-price-value">$1,750,000</div>
                         <div class="card-price-per">$17,695 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Culbreath_Rogues_Path_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Culbreath_Rogues_Path_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Batten Road -->
-            <div class="property-card hover-target">
+
+            <!-- 7. Batten Road - $1,600,000 - 79.8 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="10" r="3"/>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
                     </div>
-                    <div class="card-badge">40% Below</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Spring Lake Area</div>
+                    <div class="card-location">Spring Lake, Florida</div>
                     <h3 class="card-title">Batten Road<br>Prime Acreage</h3>
                     <span class="card-type">Acreage</span>
                     <div class="card-stats">
@@ -308,29 +287,23 @@
                         <div class="card-price-value">$1,600,000</div>
                         <div class="card-price-per">$20,050 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Batten_Rd_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Batten_Rd_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Anderson Snow -->
-            <div class="property-card hover-target">
+
+            <!-- 8. Anderson Snow - $1,400,000 - 4.43 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="7" width="20" height="14" rx="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <div class="card-badge">Shovel-Ready</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Spring Hill</div>
+                    <div class="card-location">Spring Hill, Florida</div>
                     <h3 class="card-title">Anderson Snow Road<br>Walmart Adjacent</h3>
                     <span class="card-type">Commercial</span>
                     <div class="card-stats">
@@ -347,27 +320,23 @@
                         <div class="card-price-value">$1,400,000</div>
                         <div class="card-price-per">$316,027 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Anderson_Snow_Lots_Sales_Package.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Anderson_Snow_Lots_Sales_Package.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Wiscon Road -->
-            <div class="property-card hover-target">
+
+            <!-- 9. Wiscon Road - $1,375,000 - 22.8 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                     </div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">Brooksville</div>
+                    <div class="card-location">Brooksville, Florida</div>
                     <h3 class="card-title">Wiscon Road<br>Development Land</h3>
                     <span class="card-type">Development Land</span>
                     <div class="card-stats">
@@ -384,30 +353,23 @@
                         <div class="card-price-value">$1,375,000</div>
                         <div class="card-price-per">$60,307 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Wiscon_Rd_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Wiscon_Rd_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- W Jefferson -->
-            <div class="property-card hover-target">
+
+            <!-- 10. W Jefferson - $510,000 - 8.44 AC -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
-                    <div class="card-badge">Opp Zone</div>
                 </div>
                 <div class="card-content">
-                    <div class="card-location">City of Brooksville</div>
+                    <div class="card-location">City of Brooksville, Florida</div>
                     <h3 class="card-title">W Jefferson Street<br>C2 Commercial</h3>
                     <span class="card-type">Commercial C2</span>
                     <div class="card-stats">
@@ -416,49 +378,42 @@
                             <div class="card-stat-label">Acres</div>
                         </div>
                         <div class="card-stat">
-                            <div class="card-stat-value">Tax</div>
-                            <div class="card-stat-label">Incentives</div>
+                            <div class="card-stat-value">Opp Zone</div>
+                            <div class="card-stat-label">Tax Incentives</div>
                         </div>
                     </div>
                     <div class="card-price">
                         <div class="card-price-value">$510,000</div>
                         <div class="card-price-per">$60,427 / acre</div>
                     </div>
-                    <a href="assets/pdfs/W_Jefferson_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/W_Jefferson_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
+
         </div>
     </section>
-    
-    <!-- Footer -->
+
     <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="assets/images/logo.png" alt="A.M. Sterling Holdings" class="footer-logo">
-                <p class="footer-tagline">
-                    Private portfolio access for directors and shareholders.
-                </p>
+                <p class="footer-tagline">Private portfolio access for directors and shareholders.</p>
             </div>
             <div class="footer-contact">
                 <div class="footer-contact-label">Contact</div>
-                <a href="mailto:adrian@dradrian.net" class="footer-email hover-target">adrian@dradrian.net</a>
+                <a href="mailto:adrian@dradrian.net" class="footer-email">adrian@dradrian.net</a>
                 <div class="footer-name">Brian Adrian MBA, PhD</div>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copyright">© 2026 A.M. Sterling Holdings</div>
-            <div class="footer-disclaimer">
-                Confidential. For authorized access only. February 2026.
-            </div>
+            <div class="footer-copyright">&copy; 2026 A.M. Sterling Holdings</div>
+            <div class="footer-disclaimer">Confidential. For authorized access only. February 2026.</div>
         </div>
     </footer>
-    
-    <!-- Scripts -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
