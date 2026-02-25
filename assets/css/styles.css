@@ -158,6 +158,13 @@ body {
     max-width: 1200px;
 }
 
+.hero-logo-img {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
 .hero-eyebrow {
     font-size: 12px;
     font-weight: 500;
