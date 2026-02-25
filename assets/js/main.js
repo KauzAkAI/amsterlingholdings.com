@@ -1,20 +1,25 @@
+/* A.M. Sterling Holdings - Production JavaScript */
+
+// 1. Background Particles
 const container = document.getElementById('canvas-container');
 if (container) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 2000;
-    const posArray = new Float32Array(particlesCount * 3);
-    for (let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 10; }
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ size: 0.008, color: 0xd4a853, transparent: true, opacity: 0.6 });
-    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particlesMesh);
+    const count = 2000;
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i++) { pos[i] = (Math.random() - 0.5) * 10; }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+    const material = new THREE.PointsMaterial({ size: 0.008, color: 0xd4a853, transparent: true, opacity: 0.6 });
+    const mesh = new THREE.Points(particlesGeometry, material);
+    scene.add(mesh);
     camera.position.z = 3;
 
     let targetX = 0, targetY = 0;
@@ -25,9 +30,9 @@ if (container) {
 
     function animate() {
         requestAnimationFrame(animate);
-        particlesMesh.rotation.y += 0.001;
-        particlesMesh.rotation.x += (targetY * 0.05 - particlesMesh.rotation.x) * 0.02;
-        particlesMesh.rotation.y += (targetX * 0.05 - particlesMesh.rotation.y) * 0.02;
+        mesh.rotation.y += 0.001;
+        mesh.rotation.x += (targetY * 0.05 - mesh.rotation.x) * 0.02;
+        mesh.rotation.y += (targetX * 0.05 - mesh.rotation.y) * 0.02;
         renderer.render(scene, camera);
     }
     animate();
@@ -39,12 +44,16 @@ if (container) {
     });
 }
 
+// 2. Verified Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        if(this.getAttribute('href') !== "#") {
+        const targetId = this.getAttribute('href');
+        if (targetId !== "#" && targetId.startsWith('#')) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) { target.scrollIntoView({ behavior: 'smooth' }); }
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     });
 });
