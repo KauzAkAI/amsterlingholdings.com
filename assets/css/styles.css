@@ -1,9 +1,5 @@
 /* A.M. Sterling Holdings - Main Stylesheet */
-/* Version 1.0 | February 2026 */
 
-/* ========================================
-   CSS VARIABLES & ROOT
-   ======================================== */
 :root {
     --black: #050507;
     --deep: #0a0a0f;
@@ -17,7 +13,6 @@
     --gold-bright: #f0c96c;
     --gold-dim: #8a6d35;
     --copper: #b87333;
-    --platinum: #e5e4e2;
     
     --text: #ffffff;
     --text-dim: rgba(255,255,255,0.6);
@@ -27,14 +22,7 @@
     --font-body: 'Space Grotesk', system-ui, sans-serif;
 }
 
-/* ========================================
-   RESET & BASE
-   ======================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
     scroll-behavior: smooth;
@@ -42,23 +30,15 @@ html {
     scrollbar-color: var(--gold-dim) var(--deep);
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--deep); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
-
 body {
     font-family: var(--font-body);
     background: var(--black);
     color: var(--text);
     overflow-x: hidden;
-    cursor: default;
-    font-size: 16px;
 }
 
-/* ========================================
-   CUSTOM CURSOR
-   ======================================== */
-.cursor {
+/* Cursor */
+.cursor, .cursor-dot {
     width: 20px;
     height: 20px;
     border: 1px solid var(--gold);
@@ -66,7 +46,6 @@ body {
     position: fixed;
     pointer-events: none;
     z-index: 10000;
-    transition: transform 0.15s ease, opacity 0.15s ease;
     mix-blend-mode: difference;
 }
 
@@ -74,20 +53,11 @@ body {
     width: 4px;
     height: 4px;
     background: var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
+    border: none;
     z-index: 10001;
 }
 
-.cursor.hover {
-    transform: scale(2.5);
-    background: rgba(212, 168, 83, 0.1);
-}
-
-/* ========================================
-   THREE.JS CANVAS
-   ======================================== */
+/* Canvas */
 #canvas-container {
     position: fixed;
     top: 0;
@@ -98,9 +68,7 @@ body {
     opacity: 0.6;
 }
 
-/* ========================================
-   VISUAL EFFECTS
-   ======================================== */
+/* Grain */
 .grain {
     position: fixed;
     top: -50%;
@@ -111,22 +79,9 @@ body {
     pointer-events: none;
     opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    animation: grain 8s steps(10) infinite;
 }
 
-@keyframes grain {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-5%, -10%); }
-    20% { transform: translate(-15%, 5%); }
-    30% { transform: translate(7%, -25%); }
-    40% { transform: translate(-5%, 25%); }
-    50% { transform: translate(-15%, 10%); }
-    60% { transform: translate(15%, 0%); }
-    70% { transform: translate(0%, 15%); }
-    80% { transform: translate(3%, 35%); }
-    90% { transform: translate(-10%, 10%); }
-}
-
+/* Ambient Glow */
 .ambient-glow {
     position: fixed;
     width: 800px;
@@ -150,9 +105,7 @@ body {
     background: radial-gradient(circle, var(--copper) 0%, transparent 70%);
 }
 
-/* ========================================
-   NAVIGATION
-   ======================================== */
+/* Navigation */
 .nav {
     position: fixed;
     top: 0;
@@ -167,11 +120,6 @@ body {
 
 .nav-logo {
     height: 50px;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-logo:hover {
-    transform: scale(1.05);
 }
 
 .nav-links {
@@ -187,28 +135,13 @@ body {
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    position: relative;
-    padding: 5px 0;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.nav-links a:hover {
+    color: var(--gold);
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* ========================================
-   HERO SECTION
-   ======================================== */
+/* Hero */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -226,7 +159,7 @@ body {
 }
 
 .hero-eyebrow {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.5em;
     text-transform: uppercase;
@@ -234,29 +167,21 @@ body {
     margin-bottom: 30px;
 }
 
-.hero-eyebrow span {
-    display: inline-block;
-}
-
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(70px, 14vw, 200px);
+    font-size: clamp(60px, 12vw, 160px);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
-    overflow: visible;
 }
 
 .hero-title .line {
     display: block;
-    overflow: visible;
-    padding-bottom: 0.1em;
 }
 
 .hero-title .word {
     display: inline-block;
-    padding-bottom: 0.15em;
 }
 
 .hero-title em {
@@ -285,14 +210,14 @@ body {
 
 .hero-stat-value {
     font-family: var(--font-display);
-    font-size: 72px;
+    font-size: 56px;
     font-weight: 400;
     color: var(--gold);
     line-height: 1;
 }
 
 .hero-stat-label {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -300,7 +225,6 @@ body {
     margin-top: 10px;
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
     bottom: 60px;
@@ -323,29 +247,9 @@ body {
     width: 1px;
     height: 80px;
     background: linear-gradient(to bottom, var(--gold), transparent);
-    position: relative;
-    overflow: hidden;
 }
 
-.scroll-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    background: var(--gold-bright);
-    animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(400%); }
-}
-
-/* ========================================
-   PORTFOLIO SECTION
-   ======================================== */
+/* Portfolio Section */
 .portfolio {
     position: relative;
     z-index: 2;
@@ -400,9 +304,7 @@ body {
     line-height: 1;
 }
 
-/* ========================================
-   PROPERTY CARDS
-   ======================================== */
+/* Property Cards Grid */
 .properties-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -415,34 +317,12 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: 4px;
     overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-}
-
-.property-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(212, 168, 83, 0.03) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
+    transition: all 0.4s ease;
 }
 
 .property-card:hover {
-    transform: translateY(-10px);
     border-color: rgba(212, 168, 83, 0.3);
-    box-shadow: 
-        0 40px 80px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(212, 168, 83, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.property-card:hover::before {
-    opacity: 1;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .property-card.featured {
@@ -453,7 +333,7 @@ body {
 /* Card Visual */
 .card-visual {
     position: relative;
-    height: 240px;
+    height: 200px;
     background: linear-gradient(135deg, var(--surface) 0%, var(--elevated) 100%);
     display: flex;
     align-items: center;
@@ -462,7 +342,7 @@ body {
 }
 
 .property-card.featured .card-visual {
-    height: 400px;
+    height: 350px;
 }
 
 .card-visual-pattern {
@@ -479,46 +359,32 @@ body {
         linear-gradient(60deg, var(--copper) 25%, transparent 25.5%, transparent 75%, var(--copper) 75%, var(--copper));
     background-size: 80px 140px;
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-    transition: transform 0.6s ease;
-}
-
-.property-card:hover .card-visual-pattern {
-    transform: scale(1.1);
 }
 
 .card-icon {
-    position: relative;
-    z-index: 1;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border: 1px solid var(--gold-dim);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--gold);
-    transition: all 0.4s ease;
-}
-
-.property-card:hover .card-icon {
-    transform: scale(1.1);
-    border-color: var(--gold);
-    box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
 }
 
 .card-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 .card-badge {
     position: absolute;
     top: 20px;
     left: 20px;
-    padding: 10px 18px;
+    padding: 8px 16px;
     background: var(--gold);
     color: var(--black);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -526,15 +392,15 @@ body {
 
 /* Card Content */
 .card-content {
-    padding: 35px;
+    padding: 30px;
 }
 
 .property-card.featured .card-content {
-    padding: 45px;
+    padding: 40px;
 }
 
 .card-location {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -544,22 +410,22 @@ body {
 
 .card-title {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 400;
     margin-bottom: 15px;
     line-height: 1.3;
 }
 
 .property-card.featured .card-title {
-    font-size: 44px;
+    font-size: 32px;
 }
 
 .card-type {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 6px 14px;
     background: var(--elevated);
     border: 1px solid var(--glass-border);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -582,14 +448,14 @@ body {
 
 .card-stat-value {
     font-family: var(--font-display);
-    font-size: 34px;
+    font-size: 28px;
     font-weight: 400;
     color: var(--text);
     line-height: 1;
 }
 
 .card-stat-label {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -606,7 +472,7 @@ body {
 
 .card-price-value {
     font-family: var(--font-display);
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 400;
     color: var(--gold);
     line-height: 1;
@@ -617,7 +483,7 @@ body {
 }
 
 .card-price-per {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text-muted);
 }
 
@@ -628,62 +494,30 @@ body {
     justify-content: center;
     gap: 12px;
     width: 100%;
-    padding: 20px 30px;
+    padding: 18px 30px;
     background: transparent;
     border: 1px solid var(--glass-border);
     color: var(--text);
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.card-download::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gold);
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 .card-download:hover {
     border-color: var(--gold);
-    color: var(--black);
-}
-
-.card-download:hover::before {
-    transform: translateX(0);
-}
-
-.card-download span,
-.card-download svg {
-    position: relative;
-    z-index: 1;
+    color: var(--gold);
 }
 
 .card-download svg {
     width: 16px;
     height: 16px;
-    transition: transform 0.3s ease;
 }
 
-.card-download:hover svg {
-    transform: translateY(2px);
-}
-
-/* ========================================
-   FOOTER
-   ======================================== */
+/* Footer */
 .footer {
     position: relative;
     z-index: 2;
@@ -733,7 +567,6 @@ body {
     font-size: 28px;
     color: var(--gold);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .footer-email:hover {
@@ -769,9 +602,7 @@ body {
     text-align: right;
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
+/* Responsive */
 @media (max-width: 1200px) {
     .properties-grid {
         grid-template-columns: repeat(2, 1fr);
