@@ -52,6 +52,7 @@ body {
     color: var(--text);
     overflow-x: hidden;
     cursor: default;
+    font-size: 16px;
 }
 
 /* ========================================
@@ -222,7 +223,6 @@ body {
 .hero-content {
     text-align: center;
     max-width: 1200px;
-    padding-bottom: 150px;
 }
 
 .hero-eyebrow {
@@ -232,7 +232,6 @@ body {
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 30px;
-    overflow: hidden;
 }
 
 .hero-eyebrow span {
@@ -241,33 +240,29 @@ body {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(60px, 12vw, 180px);
+    font-size: clamp(70px, 14vw, 200px);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.03em;
     margin-bottom: 20px;
+    overflow: visible;
 }
 
 .hero-title .line {
     display: block;
-    padding-bottom: 0.05em;
+    overflow: visible;
+    padding-bottom: 0.1em;
 }
 
 .hero-title .word {
     display: inline-block;
+    transform: translateY(100%);
+    padding-bottom: 0.15em;
 }
 
 .hero-title em {
     font-style: italic;
     color: var(--gold);
-}
-
-.hero-title .tm {
-    font-size: 18px;
-    vertical-align: top;
-    color: var(--gold);
-    font-family: var(--font-body);
-    margin-left: 2px;
 }
 
 .hero-subtitle {
@@ -276,31 +271,31 @@ body {
     color: var(--text-dim);
     letter-spacing: 0.1em;
     margin-top: 40px;
-    overflow: hidden;
 }
 
 .hero-stats {
     display: flex;
     justify-content: center;
     gap: 80px;
-    margin-top: 50px;
-    margin-bottom: 0;
+    margin-top: 80px;
 }
 
 .hero-stat {
     text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .hero-stat-value {
     font-family: var(--font-display);
-    font-size: 42px;
+    font-size: 72px;
     font-weight: 400;
     color: var(--gold);
     line-height: 1;
 }
 
 .hero-stat-label {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -311,15 +306,14 @@ body {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    opacity: 1;
-    z-index: 100;
+    gap: 15px;
+    opacity: 0;
 }
 
 .scroll-text {
@@ -465,7 +459,7 @@ body {
 /* Card Visual */
 .card-visual {
     position: relative;
-    height: 200px;
+    height: 240px;
     background: linear-gradient(135deg, var(--surface) 0%, var(--elevated) 100%);
     display: flex;
     align-items: center;
@@ -474,7 +468,7 @@ body {
 }
 
 .property-card.featured .card-visual {
-    height: 350px;
+    height: 400px;
 }
 
 .card-visual-pattern {
@@ -501,8 +495,8 @@ body {
 .card-icon {
     position: relative;
     z-index: 1;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border: 1px solid var(--gold-dim);
     border-radius: 50%;
     display: flex;
@@ -519,18 +513,18 @@ body {
 }
 
 .card-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
 }
 
 .card-badge {
     position: absolute;
     top: 20px;
     left: 20px;
-    padding: 8px 16px;
+    padding: 10px 18px;
     background: var(--gold);
     color: var(--black);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -538,15 +532,15 @@ body {
 
 /* Card Content */
 .card-content {
-    padding: 30px;
+    padding: 35px;
 }
 
 .property-card.featured .card-content {
-    padding: 40px;
+    padding: 45px;
 }
 
 .card-location {
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -556,22 +550,22 @@ body {
 
 .card-title {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 400;
     margin-bottom: 15px;
     line-height: 1.3;
 }
 
 .property-card.featured .card-title {
-    font-size: 32px;
+    font-size: 44px;
 }
 
 .card-type {
     display: inline-block;
-    padding: 6px 14px;
+    padding: 8px 16px;
     background: var(--elevated);
     border: 1px solid var(--glass-border);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -594,14 +588,14 @@ body {
 
 .card-stat-value {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 400;
     color: var(--text);
     line-height: 1;
 }
 
 .card-stat-label {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -618,7 +612,7 @@ body {
 
 .card-price-value {
     font-family: var(--font-display);
-    font-size: 36px;
+    font-size: 42px;
     font-weight: 400;
     color: var(--gold);
     line-height: 1;
@@ -629,7 +623,7 @@ body {
 }
 
 .card-price-per {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-muted);
 }
 
@@ -640,12 +634,12 @@ body {
     justify-content: center;
     gap: 12px;
     width: 100%;
-    padding: 18px 30px;
+    padding: 20px 30px;
     background: transparent;
     border: 1px solid var(--glass-border);
     color: var(--text);
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -771,28 +765,6 @@ body {
 .footer-copyright {
     font-size: 12px;
     color: var(--text-muted);
-}
-
-.footer-affiliates {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.footer-affiliate {
-    opacity: 0.7;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.footer-affiliate:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.footer-affiliate img {
-    height: 50px;
-    width: auto;
 }
 
 .footer-disclaimer {
