@@ -765,6 +765,28 @@ body {
     color: var(--text-muted);
 }
 
+.footer-affiliates {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer-affiliate {
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-affiliate:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.footer-affiliate img {
+    height: 50px;
+    width: auto;
+}
+
 .footer-disclaimer {
     font-size: 11px;
     color: var(--text-muted);
