@@ -3,92 +3,664 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.M. Sterling Holdings</title>
+    <title>A.M. Sterling™ Holdings</title>
     <meta name="robots" content="noindex, nofollow">
-    
+    <meta name="description" content="A.M. Sterling™ Holdings — Private Real Estate Portfolio">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           A.M. STERLING™ HOLDINGS
+           Self-contained stylesheet
+           ============================================ */
+
+        /* --- RESET & BASE --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-card-hover: #161616;
+            --bg-card-featured: #131313;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text: #ffffff;
+            --text-secondary: rgba(255,255,255,0.55);
+            --text-muted: rgba(255,255,255,0.35);
+            --accent: #c9a84c;
+            --accent-dim: rgba(201,168,76,0.15);
+            --accent-glow: rgba(201,168,76,0.08);
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Space Grotesk', -apple-system, sans-serif;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- BACKGROUND CANVAS --- */
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- GRAIN OVERLAY --- */
+        .grain {
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* --- AMBIENT GLOW --- */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(120px);
+        }
+        .glow-1 {
+            width: 600px; height: 600px;
+            top: -200px; right: -100px;
+            background: radial-gradient(circle, rgba(201,168,76,0.04), transparent 70%);
+        }
+        .glow-2 {
+            width: 500px; height: 500px;
+            bottom: -150px; left: -100px;
+            background: radial-gradient(circle, rgba(201,168,76,0.03), transparent 70%);
+        }
+
+        /* --- NAVIGATION --- */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 48px;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.9;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 48px 80px;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero-subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 64px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 64px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .hero-stat-label {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1s;
+        }
+        .scroll-text {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio {
+            position: relative;
+            z-index: 2;
+            padding: 80px 48px 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 56px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 400;
+        }
+        .section-count {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        /* --- PROPERTY GRID --- */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        /* --- PROPERTY CARD --- */
+        .property-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .property-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .property-card.featured {
+            grid-column: span 1;
+            background: var(--bg-card-featured);
+            border-color: rgba(201,168,76,0.12);
+        }
+        .property-card.featured:hover {
+            border-color: rgba(201,168,76,0.25);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow);
+        }
+
+        /* Card Visual / Image Area */
+        .card-visual {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-visual-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .card-icon {
+            position: relative;
+            z-index: 1;
+            width: 48px;
+            height: 48px;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        .card-icon svg { width: 100%; height: 100%; }
+
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 4px;
+            background: rgba(201,168,76,0.12);
+            color: var(--accent);
+            border: 1px solid rgba(201,168,76,0.2);
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-location {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .card-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        /* Card Stats Row */
+        .card-stats {
+            display: flex;
+            gap: 24px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .card-stat-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .card-stat-label {
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Card Price */
+        .card-price {
+            margin-bottom: 20px;
+            margin-top: auto;
+        }
+        .card-price-value {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .card-price-per {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Card Download Button */
+        .card-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(201,168,76,0.2);
+            background: var(--accent-dim);
+            transition: all var(--transition);
+            align-self: flex-start;
+        }
+        .card-download:hover {
+            background: rgba(201,168,76,0.25);
+            border-color: rgba(201,168,76,0.4);
+        }
+        .card-download svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            position: relative;
+            z-index: 2;
+            padding: 64px 48px 40px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+        .footer-logo {
+            height: 36px;
+            width: auto;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 280px;
+        }
+        .footer-contact-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .footer-email {
+            font-size: 15px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+            transition: opacity var(--transition);
+        }
+        .footer-email:hover { opacity: 0.7; }
+        .footer-name {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-affiliates {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .footer-affiliate img {
+            height: 28px;
+            width: auto;
+            opacity: 0.4;
+            transition: opacity var(--transition);
+        }
+        .footer-affiliate:hover img { opacity: 0.7; }
+        .footer-copyright {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .footer-disclaimer {
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .properties-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 16px 24px; }
+            .hero { padding: 100px 24px 60px; }
+            .hero-title { font-size: clamp(36px, 10vw, 64px); }
+            .hero-stats { flex-direction: column; gap: 24px; }
+            .portfolio { padding: 48px 24px 80px; }
+            .properties-grid { grid-template-columns: 1fr; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .section-count { font-size: 32px; }
+            .footer { padding: 48px 24px 32px; }
+            .footer-content { flex-direction: column; gap: 32px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 11px; }
+            .hero-stats { gap: 20px; }
+            .card-stats { gap: 16px; flex-wrap: wrap; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
-    
+
     <!-- Three.js Background -->
     <div id="canvas-container"></div>
-    
+
     <!-- Visual Effects -->
     <div class="grain"></div>
     <div class="ambient-glow glow-1"></div>
     <div class="ambient-glow glow-2"></div>
-    
-    <!-- Navigation -->
+
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
     <nav class="nav">
-        <img src="assets/images/logo.png" alt="A.M. Sterling Holdings" class="nav-logo">
+        <img src="assets/images/logo.png" alt="A.M. Sterling™ Holdings" class="nav-logo">
         <ul class="nav-links">
-            <li><a href="#portfolio" class="hover-target">Holdings</a></li>
-            <li><a href="#contact" class="hover-target">Contact</a></li>
+            <li><a href="#portfolio">Holdings</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    
-    <!-- Hero Section -->
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-eyebrow">
-                <span>Private Holdings</span>
-            </div>
+            <div class="hero-eyebrow">Private Holdings</div>
             <h1 class="hero-title">
-                <span class="line"><span class="word">A.M.</span> <span class="word"><em>Sterling</em></span></span>
-                <span class="line"><span class="word">Holdings</span></span>
+                <span class="line">A.M. <em>Sterling</em>™</span><br>
+                <span class="line">Holdings</span>
             </h1>
             <p class="hero-subtitle">Director & Shareholder Access</p>
-            
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <div class="hero-stat-value">354.85</div>
+                    <div class="hero-stat-value">573.5</div>
                     <div class="hero-stat-label">Total Acres</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">$19.9M</div>
+                    <div class="hero-stat-value">$37.5M</div>
                     <div class="hero-stat-label">Portfolio Value</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">9</div>
+                    <div class="hero-stat-value">15</div>
                     <div class="hero-stat-label">Properties</div>
                 </div>
             </div>
         </div>
-        
         <div class="scroll-indicator">
             <span class="scroll-text">Scroll</span>
             <div class="scroll-line"></div>
         </div>
     </section>
-    
-    <!-- Portfolio Section -->
+
+    <!-- ============================================
+         PORTFOLIO
+         ============================================ -->
     <section class="portfolio" id="portfolio">
         <div class="section-header">
             <div class="section-title-group">
                 <div class="section-label">Assets</div>
                 <h2 class="section-title">Current Holdings</h2>
             </div>
-            <div class="section-count">09</div>
+            <div class="section-count">15</div>
         </div>
-        
+
         <div class="properties-grid">
-            <!-- Featured: US 41 Storage -->
-            <div class="property-card featured hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 1: Ocean Club Bahamas (FEATURED)
+                 ========================================== -->
+            <div class="property-card featured">
+                <div class="card-visual" style="background: url('assets/images/ocean_club.png') center/cover no-repeat;">
+                    <div class="card-badge">Not For Sale</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Paradise Island, Bahamas</div>
+                    <h3 class="card-title">Ocean Club Residences & Marina<br>Luxury Condominium</h3>
+                    <span class="card-type">Residential Condo</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">5,234</div>
+                            <div class="card-stat-label">SF</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">4 BD</div>
+                            <div class="card-stat-label">Bedrooms</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">Marina</div>
+                            <div class="card-stat-label">52-Slip</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$6,250,000</div>
+                        <div class="card-price-per">Listing Value</div>
+                    </div>
+                    <a href="assets/pdfs/Ocean_Club_Residences_Bahamas.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download Info Sheet</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PROPERTY 2: US 41 Storage (FEATURED)
+                 ========================================== -->
+            <div class="property-card featured">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 7V3h6v4"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 7V3h6v4"/></svg>
                     </div>
                     <div class="card-badge">Featured</div>
                 </div>
@@ -114,24 +686,61 @@
                         <div class="card-price-value">$4,750,000</div>
                         <div class="card-price-per">$295,391 / acre</div>
                     </div>
-                    <a href="assets/pdfs/18602_US41_Storage_Sales_Package.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/18602_US41_Storage_Sales_Package.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download Package</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Medical Office -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 3: Medical Park Lane (Under Contract)
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M12 8v8M8 12h8"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                    </div>
+                    <div class="card-badge">Under Contract</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Hernando County</div>
+                    <h3 class="card-title">Medical Park Lane<br>Shovel-Ready Medical Campus</h3>
+                    <span class="card-type">Medical / Development</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">16.2</div>
+                            <div class="card-stat-label">Acres</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">13.3K</div>
+                            <div class="card-stat-label">SF Shell</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">3</div>
+                            <div class="card-stat-label">Buildings</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$3,000,000</div>
+                        <div class="card-price-per">$185,185 / acre</div>
+                    </div>
+                    <a href="assets/pdfs/Medical_Plaza_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PROPERTY 4: 15435 Cortez Blvd Medical
+                 ========================================== -->
+            <div class="property-card">
+                <div class="card-visual">
+                    <div class="card-visual-pattern"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
                     </div>
                     <div class="card-badge">Income</div>
                 </div>
@@ -153,23 +762,21 @@
                         <div class="card-price-value">$3,600,000</div>
                         <div class="card-price-per">$182 / SF</div>
                     </div>
-                    <a href="assets/pdfs/Cortez_Blvd_15435_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Cortez_Blvd_15435_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Spring Hill Drive -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 5: 13080 Spring Hill Dr
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg>
                     </div>
                     <div class="card-badge">Drive-Thru</div>
                 </div>
@@ -191,24 +798,21 @@
                         <div class="card-price-value">$2,950,000</div>
                         <div class="card-price-per">$200 / SF</div>
                     </div>
-                    <a href="assets/pdfs/Spring_Hill_Dr_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Spring_Hill_Dr_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Broad Street -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 6: Broad Street US 41
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                            <line x1="4" y1="22" x2="4" y2="15"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
                     </div>
                     <div class="card-badge">21K+ Traffic</div>
                 </div>
@@ -230,24 +834,21 @@
                         <div class="card-price-value">$1,980,000</div>
                         <div class="card-price-per">$120,000 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Broad_Street_US41_Final.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Broad_Street_US41_Final.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Culbreath/Rogues Path -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 7: Culbreath & Rogues Path
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
                     <div class="card-badge">Home Incl.</div>
                 </div>
@@ -269,24 +870,21 @@
                         <div class="card-price-value">$1,750,000</div>
                         <div class="card-price-per">$17,695 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Culbreath_Rogues_Path_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Culbreath_Rogues_Path_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Batten Road -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 8: Batten Road
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="10" r="3"/>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
                     </div>
                     <div class="card-badge">40% Below</div>
                 </div>
@@ -308,24 +906,21 @@
                         <div class="card-price-value">$1,600,000</div>
                         <div class="card-price-per">$20,050 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Batten_Rd_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Batten_Rd_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Anderson Snow -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 9: Anderson Snow Road
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="7" width="20" height="14" rx="2"/>
-                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
                     <div class="card-badge">Shovel-Ready</div>
                 </div>
@@ -347,23 +942,21 @@
                         <div class="card-price-value">$1,400,000</div>
                         <div class="card-price-per">$316,027 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Anderson_Snow_Lots_Sales_Package.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Anderson_Snow_Lots_Sales_Package.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Wiscon Road -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 10: Wiscon Road
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                     </div>
                 </div>
                 <div class="card-content">
@@ -384,25 +977,21 @@
                         <div class="card-price-value">$1,375,000</div>
                         <div class="card-price-per">$60,307 / acre</div>
                     </div>
-                    <a href="assets/pdfs/Wiscon_Rd_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/Wiscon_Rd_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- W Jefferson -->
-            <div class="property-card hover-target">
+
+            <!-- ==========================================
+                 PROPERTY 11: W Jefferson Street
+                 ========================================== -->
+            <div class="property-card">
                 <div class="card-visual">
                     <div class="card-visual-pattern"></div>
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
                     <div class="card-badge">Opp Zone</div>
                 </div>
@@ -424,44 +1013,399 @@
                         <div class="card-price-value">$510,000</div>
                         <div class="card-price-per">$60,427 / acre</div>
                     </div>
-                    <a href="assets/pdfs/W_Jefferson_Premium.pdf" download class="card-download hover-target">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="assets/pdfs/W_Jefferson_Premium.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download</span>
                     </a>
                 </div>
             </div>
+
+            <!-- ==========================================
+                 PROPERTY 12: Floral City 199 Acres
+                 ========================================== -->
+            <div class="property-card">
+                <div class="card-visual">
+                    <div class="card-visual-pattern"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="card-badge">35% Below Mkt</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Floral City, Citrus County</div>
+                    <h3 class="card-title">S Pleasant Grove Rd<br>Agricultural Assemblage</h3>
+                    <span class="card-type">Agricultural Grazing</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">199.15</div>
+                            <div class="card-stat-label">Acres</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">4</div>
+                            <div class="card-stat-label">Parcels</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">$596</div>
+                            <div class="card-stat-label">Annual Tax</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$3,285,975</div>
+                        <div class="card-price-per">$16,500 / acre</div>
+                    </div>
+                    <a href="assets/pdfs/Citrus_County_199_Acre_Investment.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PROPERTY 13: Crystal River 77 Acres
+                 ========================================== -->
+            <div class="property-card">
+                <div class="card-visual">
+                    <div class="card-visual-pattern"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="card-badge">LDR Zoning</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Crystal River, Citrus County</div>
+                    <h3 class="card-title">W Maryland Rd<br>Holiday Acres Development</h3>
+                    <span class="card-type">Low Density Residential</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">77.59</div>
+                            <div class="card-stat-label">Acres</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">Zone X</div>
+                            <div class="card-stat-label">Flood</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">15 min</div>
+                            <div class="card-stat-label">To Springs</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$872,888</div>
+                        <div class="card-price-per">$11,250 / acre</div>
+                    </div>
+                    <a href="assets/pdfs/Crystal_River_77_Acre_Investment.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PROPERTY 14: Crystal River 40 Acres
+                 ========================================== -->
+            <div class="property-card">
+                <div class="card-visual">
+                    <div class="card-visual-pattern"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/></svg>
+                    </div>
+                    <div class="card-badge">Mid-Size</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Crystal River, Citrus County</div>
+                    <h3 class="card-title">N Jorie Terrace<br>Holiday Acres Tract</h3>
+                    <span class="card-type">Low Density Residential</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">40.49</div>
+                            <div class="card-stat-label">Acres</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">118 AC</div>
+                            <div class="card-stat-label">Package Avail</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">$546,615</div>
+                        <div class="card-price-per">$13,500 / acre</div>
+                    </div>
+                    <a href="assets/pdfs/Crystal_River_40_Acre_Investment.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 PROPERTY 15: Homosassa 84 Acres
+                 ========================================== -->
+            <div class="property-card">
+                <div class="card-visual">
+                    <div class="card-visual-pattern"></div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <div class="card-badge">Long-Term Hold</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-location">Homosassa, Citrus County</div>
+                    <h3 class="card-title">S Palm Ave<br>Crystal Acres Wetland</h3>
+                    <span class="card-type">Appreciation / Mitigation</span>
+                    <div class="card-stats">
+                        <div class="card-stat">
+                            <div class="card-stat-value">84.37</div>
+                            <div class="card-stat-label">Acres</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">9.28</div>
+                            <div class="card-stat-label">Upland AC</div>
+                        </div>
+                        <div class="card-stat">
+                            <div class="card-stat-value">$1,760</div>
+                            <div class="card-stat-label">Annual Tax</div>
+                        </div>
+                    </div>
+                    <div class="card-price">
+                        <div class="card-price-value">Hold</div>
+                        <div class="card-price-per">For Appreciation</div>
+                    </div>
+                    <a href="assets/pdfs/Homosassa_84_Acre_Investment.pdf" download class="card-download">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 TO ADD A NEW PROPERTY:
+                 1. Copy any property card block above
+                 2. Paste it here
+                 3. Change: badge, location, title, type, stats, price, PDF link
+                 4. Update the hero stat count and section count
+                 ========================================== -->
+
         </div>
     </section>
-    
-    <!-- Footer -->
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer class="footer" id="contact">
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/images/logo.png" alt="A.M. Sterling Holdings" class="footer-logo">
-                <p class="footer-tagline">
-                    Private portfolio access for directors and shareholders.
-                </p>
+                <img src="assets/images/logo.png" alt="A.M. Sterling™ Holdings" class="footer-logo">
+                <p class="footer-tagline">Private portfolio access for directors and shareholders.</p>
             </div>
             <div class="footer-contact">
                 <div class="footer-contact-label">Contact</div>
-                <a href="mailto:adrian@dradrian.net" class="footer-email hover-target">adrian@dradrian.net</a>
+                <a href="mailto:adrian@dradrian.net" class="footer-email">adrian@dradrian.net</a>
                 <div class="footer-name">Brian Adrian MBA, PhD</div>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copyright">© 2026 A.M. Sterling Holdings</div>
-            <div class="footer-disclaimer">
-                Confidential. For authorized access only. February 2026.
+            <div class="footer-affiliates">
+                <a href="https://amsterlingbooks.com" target="_blank" class="footer-affiliate">
+                    <img src="assets/images/am_sterling_books_logo.png" alt="A.M. Sterling™ Books">
+                </a>
+                <a href="https://kauzak.foundation" target="_blank" class="footer-affiliate">
+                    <img src="assets/images/kauzak_logo.png" alt="Kauzak Foundation">
+                </a>
             </div>
+            <div class="footer-copyright">&copy; 2026 A.M. Sterling&trade; Holdings</div>
+            <div class="footer-disclaimer">Confidential. For authorized access only. March 2026.</div>
         </div>
     </footer>
-    
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- ============================================
+         SCRIPTS
+         All JS is inline — nothing external to break
+         ============================================ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+    /* ============================================
+       THREE.JS BACKGROUND
+       Subtle animated particle field
+       ============================================ */
+    (function() {
+        const container = document.getElementById('canvas-container');
+        if (!container || typeof THREE === 'undefined') return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Particle system
+        const particleCount = 800;
+        const positions = new Float32Array(particleCount * 3);
+        const velocities = [];
+
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 80;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
+            velocities.push({
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.01
+            });
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const material = new THREE.PointsMaterial({
+            color: 0xc9a84c,
+            size: 0.08,
+            transparent: true,
+            opacity: 0.3,
+            sizeAttenuation: true
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // Subtle connecting lines
+        const lineGeometry = new THREE.BufferGeometry();
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0xc9a84c,
+            transparent: true,
+            opacity: 0.04
+        });
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const pos = particles.geometry.attributes.position.array;
+            const linePositions = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                pos[i * 3] += velocities[i].x;
+                pos[i * 3 + 1] += velocities[i].y;
+                pos[i * 3 + 2] += velocities[i].z;
+
+                // Wrap around boundaries
+                for (let j = 0; j < 3; j++) {
+                    if (pos[i * 3 + j] > 40) pos[i * 3 + j] = -40;
+                    if (pos[i * 3 + j] < -40) pos[i * 3 + j] = 40;
+                }
+
+                // Connect nearby particles (only check a subset for performance)
+                if (i < 200) {
+                    for (let k = i + 1; k < Math.min(i + 20, 200); k++) {
+                        const dx = pos[i * 3] - pos[k * 3];
+                        const dy = pos[i * 3 + 1] - pos[k * 3 + 1];
+                        const dz = pos[i * 3 + 2] - pos[k * 3 + 2];
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                        if (dist < 8) {
+                            linePositions.push(
+                                pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2],
+                                pos[k * 3], pos[k * 3 + 1], pos[k * 3 + 2]
+                            );
+                        }
+                    }
+                }
+            }
+
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            if (linePositions.length > 0) {
+                lines.geometry.dispose();
+                lines.geometry = new THREE.BufferGeometry();
+                lines.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+            }
+
+            // Subtle camera movement following mouse
+            camera.position.x += (mouseX * 2 - camera.position.x) * 0.01;
+            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.01;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    })();
+
+    /* ============================================
+       GSAP SCROLL ANIMATIONS
+       ============================================ */
+    (function() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate property cards on scroll
+        gsap.utils.toArray('.property-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 40,
+                duration: 0.6,
+                delay: (i % 3) * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Section header animation
+        gsap.from('.section-header', {
+            scrollTrigger: {
+                trigger: '.section-header',
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+
+        // Footer animation
+        gsap.from('.footer-content', {
+            scrollTrigger: {
+                trigger: '.footer',
+                start: 'top 90%'
+            },
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+            ease: 'power2.out'
+        });
+
+        // Nav fade on scroll
+        const nav = document.querySelector('.nav');
+        ScrollTrigger.create({
+            start: 'top -80',
+            onUpdate: (self) => {
+                nav.style.background = self.progress > 0
+                    ? 'rgba(10,10,10,0.98)'
+                    : 'linear-gradient(to bottom, rgba(10,10,10,0.95), transparent)';
+            }
+        });
+    })();
+    </script>
+
 </body>
 </html>
