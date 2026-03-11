@@ -343,6 +343,47 @@
             color: var(--accent);
             border: 1px solid rgba(201,168,76,0.2);
         }
+        .card-badge.sold {
+            background: rgba(180,40,40,0.2);
+            color: #e05555;
+            border: 1px solid rgba(180,40,40,0.35);
+        }
+
+        /* SOLD overlay — diagonal banner across the card image */
+        .sold-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .sold-overlay::after {
+            content: 'SOLD';
+            position: absolute;
+            top: 28px;
+            right: -40px;
+            width: 170px;
+            text-align: center;
+            transform: rotate(45deg);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #fff;
+            background: rgba(180,40,40,0.85);
+            padding: 6px 0;
+            box-shadow: 0 2px 12px rgba(180,40,40,0.3);
+        }
+        .property-card.sold-card {
+            opacity: 0.75;
+        }
+        .property-card.sold-card:hover {
+            opacity: 1;
+        }
+        .property-card.sold-card .card-price-value {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
 
         /* Card Content */
         .card-content {
@@ -620,9 +661,10 @@
             <!-- ==========================================
                  PROPERTY 1: Ocean Club Bahamas (FEATURED)
                  ========================================== -->
-            <div class="property-card featured">
+            <div class="property-card featured sold-card">
                 <div class="card-visual" style="background: url('assets/images/ocean_club.png') center/cover no-repeat;">
-                    <div class="card-badge">Not For Sale</div>
+                    <div class="sold-overlay"></div>
+                    <div class="card-badge sold">Sold</div>
                 </div>
                 <div class="card-content">
                     <div class="card-location">Paradise Island, Bahamas</div>
